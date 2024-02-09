@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# from django.views import View
-# from django.views.generic import TemplateView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from logging import getLogger
 from django.urls import reverse_lazy
@@ -18,6 +17,7 @@ def hello(request, s0):
     )
 
 
-class AssetsView(ListView):
+class AssetView(ListView):
     template_name = 'assets.html'
     model = Asset
+

@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from viewer.views import hello
+from viewer.views import hello, AssetView
+from viewer.models import Asset, AssetCategory, Employees
+
+
+admin.site.register(Asset)
+admin.site.register(AssetCategory)
+admin.site.register(Employees)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('hello/<s0>', hello)
+    path('admin/', admin.site.urls, name='admin'),
+    path('hello/<s0>', hello),
+    path('assets/', AssetView.as_view(), name='assets')
+
 ]
