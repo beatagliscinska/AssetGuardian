@@ -5,7 +5,7 @@
   <ul>
     {% for asset in object_list %}
       <li>
-        {{asset.id}}. {{ asset.description }} - {{ asset.category.name }}:  {{ asset.value }} PLN, Purchase date: {{ asset.purchase_date }}
+        {{asset.id}}.{{ asset.asset_number }}{{ asset.description }} - {{ asset.category.name }}:  {{ asset.value }} PLN, Purchase date: {{ asset.purchase_date }}
       </li>
     {% endfor %}
   </ul>
