@@ -13,10 +13,11 @@ class AssetView(ListView):
     model = Asset
 
 
-class AssetCreateView(CreateView):
+class AssetCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'form.html'
     form_class = AssetForm
     success_url = reverse_lazy('assets')
+    permission_required = 'viewer.add_asset'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

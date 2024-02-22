@@ -25,10 +25,26 @@
           <a class="nav-item nav-link active" href="{% url 'assets' %}">Assets list</a>
           <a class="nav-item nav-link active" href="{% url 'asset_create' %}">Add Asset</a>
         </div>
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="{% url 'admin:index' %}">Admin</a>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="{% url 'user_login' %}">
+            Login
+          </a>
         </div>
-      </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="{% url 'logout' %}">
+            Logout
+          </a>
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="{% url 'profile' %}">
+            Profile
+          </a>
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="{% url 'admin:index' %}">
+            Admin
+          </a>
+        </div>
     </div>
   </nav>
   <div class="container">

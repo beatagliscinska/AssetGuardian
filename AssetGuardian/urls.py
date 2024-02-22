@@ -27,6 +27,7 @@ admin.site.register(Employee)
 
 urlpatterns = [
     # path('', include('viewer.urls')),
+    path('', include('accounts.urls')),
     path('admin/', admin.site.urls, name='admin'),
     path('assets/', AssetView.as_view(), name='assets'),
     path('', AssetView.as_view(template_name='home.html'), name='home'),

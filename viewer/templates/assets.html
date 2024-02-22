@@ -1,12 +1,29 @@
 {% extends "base.html" %}
- 
+
 {% block content %}
   <h1>Welcome to your Assets List!</h1>
-  <ul>
-    {% for asset in object_list %}
-      <li>
-        {{asset.id}}.{{ asset.asset_number }}{{ asset.description }} - {{ asset.category.name }}:  {{ asset.value }} PLN, Purchase date: {{ asset.purchase_date }}
-      </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Value</th>
+        <th>Purchase Date</th>
+        <th>Asset Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for asset in object_list %}
+      <tr>
+        <td>{{ asset.id }}</td>
+        <td>{{ asset.description }}</td>
+        <td>{{ asset.category.name }}</td>
+        <td>{{ asset.value }} PLN</td>
+        <td>{{ asset.purchase_date }}</td>
+        <td>{{ asset.asset_number }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
