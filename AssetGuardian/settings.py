@@ -128,7 +128,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# defines the default auto field to be used for the primary key in newly created models
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
+# defines a custom user model that will be used for authentication and user management
 
 LOGIN_URL = '/login/'
+# specify where redirect the user to log in when they try to access protected
+# resources without being logged in beforehand

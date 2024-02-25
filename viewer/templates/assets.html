@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Welcome to your Assets List!</h1>
-  <table>
+  <h1>Welcome to your Assets !</h1>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>ID</th>
@@ -11,19 +11,36 @@
         <th>Value</th>
         <th>Purchase Date</th>
         <th>Asset Number</th>
+        <th>Actions</th>
       </tr>
+    <br><br>
+
     </thead>
     <tbody>
       {% for asset in object_list %}
-      <tr>
+      <tr onmouseover="this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.backgroundColor=''">
         <td>{{ asset.id }}</td>
         <td>{{ asset.description }}</td>
         <td>{{ asset.category.name }}</td>
         <td>{{ asset.value }} PLN</td>
         <td>{{ asset.purchase_date }}</td>
         <td>{{ asset.asset_number }}</td>
+        <td>
+          <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset(this)" data-id="{{ asset.id }}"> Update </button>
+          <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset(this)" data-id="{{ asset.id }}">Delete</button>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+  <script>
+    function deleteAsset(button) {
+      var assetId = button.getAttribute("data-id");
+      window.location.href = "/asset/" + assetId + "/delete/";
+    }
+    function updateAsset(button) {
+      var assetId = button.getAttribute("data-id");
+      window.location.href = "/asset/" + assetId + "/update/";
+    }
+  </script>
 {% endblock %}

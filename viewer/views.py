@@ -19,9 +19,9 @@ class AssetCreateView(PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('assets')
     permission_required = 'viewer.add_asset'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):  # method to provide additional data to the template
         context = super().get_context_data(**kwargs)
-        context['submit_label'] = 'Submit'  # Ustawienie etykiety przycisku na "Submit"
+        context['submit_label'] = 'Add asset'
         return context
 
     def form_invalid(self, form):
@@ -31,13 +31,13 @@ class AssetCreateView(PermissionRequiredMixin, CreateView):
 
 class AssetUpdateView(UpdateView):
     model = Asset
-    template_name = 'form.html'  # Twój szablon HTML
+    template_name = 'form.html'
     form_class = AssetForm
     success_url = reverse_lazy('assets')
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):  # method to provide additional data to the template
         context = super().get_context_data(**kwargs)
-        context['submit_label'] = 'Update'  # Ustawienie etykiety przycisku na "Update"
+        context['submit_label'] = 'Update'
         return context
 
 

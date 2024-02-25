@@ -7,5 +7,6 @@
       Are you sure you want to delete Asset id. {{ object.id }}. {{ object.description }} : asset number = {{ object.asset_number }} from database?
     </p> 
     <input type="submit" value="Delete" class="btn btn-danger">
+    <a class="btn btn-info" href="{% url 'assets' %}">Cancel</a>
   </form> 
 {% endblock %}
