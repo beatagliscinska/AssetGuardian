@@ -29,11 +29,12 @@ class AssetCreateView(PermissionRequiredMixin, CreateView):
         return super().form_invalid(form)
 
 
-class AssetUpdateView(UpdateView):
+class AssetUpdateView(PermissionRequiredMixin, UpdateView):
     model = Asset
     template_name = 'form.html'
     form_class = AssetForm
     success_url = reverse_lazy('assets')
+    permission_required = 'viewer.update_asset'
 
     def get_context_data(self, **kwargs):  # method to provide additional data to the template
         context = super().get_context_data(**kwargs)
@@ -41,10 +42,11 @@ class AssetUpdateView(UpdateView):
         return context
 
 
-class AssetDeleteView(DeleteView):
+class AssetDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'asset_confirm_delete.html'
     model = Asset
     success_url = reverse_lazy('assets')
+    permission_required = 'viewer.delete_asset'
 
 
 
