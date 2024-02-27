@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from logging import getLogger
 from django.urls import reverse_lazy
@@ -47,7 +48,6 @@ class AssetDeleteView(PermissionRequiredMixin, DeleteView):
     model = Asset
     success_url = reverse_lazy('assets')
     permission_required = 'viewer.delete_asset'
-
 
 
 
