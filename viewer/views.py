@@ -1,4 +1,6 @@
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django_filters.views import FilterView
+from .filters import AssetFilter
 from logging import getLogger
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
@@ -11,6 +13,14 @@ LOGGER = getLogger()
 class AssetView(ListView):
     template_name = 'assets.html'
     model = Asset
+    filterset_class = AssetFilter
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        filter_instance = self.filterset_class(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = filter_instance
+        return context
+
 
 class EmployeeView(ListView):
     template_name = 'employees.html'
