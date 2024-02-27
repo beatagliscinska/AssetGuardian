@@ -70,8 +70,6 @@ def profile(request):
     return render(request, 'accounts/profile.html')
 
 
-
-
 # @login_required
 # def profile(request):
 #     if request.method == 'POST':
