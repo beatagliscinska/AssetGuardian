@@ -25,9 +25,10 @@
           <a class="nav-item nav-link active" href="{% url 'assets' %}">Asset Overview</a>
           <a class="nav-item nav-link active" href="{% url 'asset_create' %}">Add Asset</a>
         </div>
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="{% url 'user_login' %}">
-            Login
+        {% if user.is_authenticated %}
+        <div class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Welcome, {{user.username}}
+          <i class="fa-solid fa-user"></i>
           </a>
         </div>
         <div class="navbar-nav">
@@ -35,21 +36,31 @@
             Logout
           </a>
         </div>
+      {% else %}
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="{% url 'profile' %}">
-            Profile
+          <a class="nav-item nav-link active" href="{% url 'user_login' %}">
+            Login
           </a>
         </div>
+<!--        <div class="navbar-nav">-->
+<!--          <a class="nav-item nav-link active" href="{% url 'profile' %}">-->
+<!--            Profile-->
+<!--          </a>-->
+<!--        </div>-->
+
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="{% url 'admin:index' %}">
             Admin
           </a>
         </div>
+        {% endif %}
     </div>
   </nav>
+
   <div class="container">
     <div class="jumbotron">
-      {% block content %}{% endblock %}
+      {% block content %}
+      {% endblock %}
     </div>
   </div>
 </body>
