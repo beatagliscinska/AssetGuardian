@@ -1,9 +1,9 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from accounts.forms import CustomCreateUserForm
+from accounts.forms import CustomCreateUserForm, CustomChangeUserForm
 from accounts.models import CustomUser
 
 from django.contrib import messages
@@ -68,3 +68,25 @@ def logout_user(request):
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
+
+# @login_required
+# def profile(request):
+#     if request.method == 'POST':
+#         user = request.user
+#         form = CustomChangeUserForm(request.POST, request.FILES, instance=user)
+#         if form.is_valid():
+#             user_form = form.save()
+#
+#             messages.success(request, 'Your profile has been updated!')
+#             return redirect('profile', user_form.username)
+#
+#         for error in list(form.errors.values()):
+#             messages.error(request, error)
+#
+#     user = get_user_model().objects.filter(username=request.user.username).first()
+#     if user:
+#         form = CustomChangeUserForm(instance=user)
+#         return render(request, 'accounts/profile.html', context={'form': form})
+#
+#     return redirect("home")

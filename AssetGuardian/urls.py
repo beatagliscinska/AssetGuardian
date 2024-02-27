@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('admin/', admin.site.urls, name='admin'),
     path('assets/', AssetView.as_view(), name='assets'),
+    path('', include('viewer.urls'))
     path('employees/', EmployeeView.as_view(), name='employees'),
     path('', AssetView.as_view(template_name='home.html'), name='home'),
     path('asset/create', AssetCreateView.as_view(), name='asset_create'),
