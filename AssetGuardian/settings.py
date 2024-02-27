@@ -138,3 +138,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_URL = '/login/'
 # specify where redirect the user to log in when they try to access protected
 # resources without being logged in beforehand
+
+DEFAULT_CHARSET = 'utf-8'
+

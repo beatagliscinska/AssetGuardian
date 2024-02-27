@@ -2,7 +2,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from logging import getLogger
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from viewer.models import Asset
+from viewer.models import Asset, Employee
 from viewer.form import AssetForm
 
 LOGGER = getLogger()
@@ -11,6 +11,10 @@ LOGGER = getLogger()
 class AssetView(ListView):
     template_name = 'assets.html'
     model = Asset
+
+class EmployeeView(ListView):
+    template_name = 'employees.html'
+    model = Employee
 
 
 class AssetCreateView(PermissionRequiredMixin, CreateView):
