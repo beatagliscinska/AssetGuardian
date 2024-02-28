@@ -29,7 +29,6 @@ class Employee(Model):
 
 class Asset(Model):
     objects = None
-    asset_number = IntegerField(unique=True, null=False)
     category = ForeignKey(AssetCategory, on_delete=DO_NOTHING)
     description = TextField()
     vendor = CharField(max_length=128)

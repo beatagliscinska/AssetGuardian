@@ -11,13 +11,13 @@
   <form method="get" class="form-inline">
     {% csrf_token %}
     {{ filter.form|crispy }}
-    <button type="submit" class="btn btn-primary">Apply Filter</button>
+    <button type="submit" class="btn btn-primary mt-2">Apply Filter</button>
   </form>
 
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Asset Number</th>
+        <th>Asset no.</th>
         <th>Description</th>
         <th>Category</th>
         <th>Value</th>
@@ -29,7 +29,7 @@
     <tbody>
       {% for asset in filter.qs %}
       <tr onmouseover="this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.backgroundColor=''">
-        <td>{{ asset.asset_number }}</td>
+        <td>{{ asset.id }}</td>
         <td>{{ asset.description }}</td>
         <td>{{ asset.category.name }}</td>
         <td>{{ asset.value }} PLN</td>
