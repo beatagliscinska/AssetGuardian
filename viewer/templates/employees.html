@@ -2,11 +2,11 @@
 
 {% block content %}
   <div class="assets-list-header">
-    <h4>Employees List</h4>
+    <h5 class="bg-light">Employees List</h5>
     <p>Explore and manage all employees available.</p>
   </div>
-  <table class="table table-bordered">
-    <thead>
+  <table class="table table-bordered table-sm"> <!-- Dodano klasę table-sm dla mniejszych wierszy -->
+    <thead class="bg-light"> <!-- Zmieniono klasę na bg-light dla delikatniejszego koloru tła nagłówków -->
       <tr>
         <th>No.</th>
         <th>Name</th>
@@ -27,9 +27,9 @@
           <td>{{ employee.department }}</td>
           <td>{{ employee.manager }}</td>
           <td>
-          <button type="submit" class="btn btn-info btn-sm" onclick="updateEmployee(this)" data-id="{{ employee.id }}"> Update </button>
-          <button type="button" class="btn btn-warning btn-sm" onclick="deleteEmployee(this)" data-id="{{ employee.id }}">Delete</button>
-        </td>
+            <button type="submit" class="btn btn-info btn-sm" onclick="updateEmployee(this)" data-id="{{ employee.id }}"> Update </button>
+            <button type="button" class="btn btn-warning btn-sm" onclick="deleteEmployee(this)" data-id="{{ employee.id }}">Delete</button>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
