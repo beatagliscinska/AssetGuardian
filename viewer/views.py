@@ -6,7 +6,7 @@ from logging import getLogger
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from viewer.models import Asset, Employee
-from viewer.form import AssetForm
+from viewer.form import AssetForm, EmployeeForm
 
 LOGGER = getLogger()
 
@@ -64,5 +64,38 @@ class AssetDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'viewer.delete_asset'
 
 
+class EmployeeCreateView(PermissionRequiredMixin, CreateView):
+    template_name = 'form_em.html'
+    form_class = EmployeeForm
+    success_url = reverse_lazy('employees')
+    permission_required = 'viewer.add_employee'
 
+    def get_context_data(self, **kwargs):  # method to provide additional data to the template
+        context = super().get_context_data(**kwargs)
+        context['submit_label'] = 'Add Employee'
+        return context
+
+    def form_invalid(self, form):
+        LOGGER.warning(">>>>>>User provided incorrect data.")
+        return super().form_invalid(form)
+
+
+class EmployeeUpdateView(PermissionRequiredMixin, UpdateView):
+    model = Employee
+    template_name = 'form_em.html'
+    form_class = EmployeeForm
+    success_url = reverse_lazy('employees')
+    permission_required = 'viewer.update_employee'
+
+    def get_context_data(self, **kwargs):  # method to provide additional data to the template
+        context = super().get_context_data(**kwargs)
+        context['submit_label'] = 'Update'
+        return context
+
+
+class EmployeeDeleteView(PermissionRequiredMixin, DeleteView):
+    template_name = 'employee_confirm_delete.html'
+    model = Employee
+    success_url = reverse_lazy('employees')
+    permission_required = 'viewer.delete_employee'
 
