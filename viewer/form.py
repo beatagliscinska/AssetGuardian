@@ -7,7 +7,7 @@ from django.forms import (
     CharField, DateField, IntegerField, ModelForm
 )
 
-from viewer.models import Asset
+from viewer.models import Asset, Employee
 
 
 def capitalized_validator(value):
@@ -60,3 +60,23 @@ class AssetForm(ModelForm):
         if description is None or description.strip() == '':
             raise ValidationError("Description field cannot be empty.")
         return self.cleaned_data
+
+
+class EmployeeForm(ModelForm):
+    # description = CharField(validators=[capitalized_validator], required=True,
+    #                         error_messages={'required': 'This field cannot be empty.'})
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
+    class Meta:
+        model = Employee
+        fields = '__all__'
+        # error_messages = {
+        #     'description': {
+        #         'null': "This field cannot be empty."
+        #     }
+        # }
+
