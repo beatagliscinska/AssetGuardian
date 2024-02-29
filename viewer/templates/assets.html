@@ -1,53 +1,78 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
-  <div class="assets-list-header">
-    <h4>Assets List</h4>
-    <p>Explore and manage all assets available.</p>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="assets-list-header">
+        <h5 class="bg-light">Assets List</h5>
+        <p>Explore and manage all assets available.</p>
+      </div>
+
+      <table class="table table-bordered table-sm"> <!-- Dodano klasę table-sm dla mniejszych wierszy -->
+        <thead class="bg-light"> <!-- Zmieniono klasę na bg-light dla delikatniejszego koloru tła nagłówków -->
+          <tr>
+            <th>Asset no.</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Value</th>
+            <th>Purchase Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for asset in filter.qs %}
+          <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
+            <td>{{ asset.id }}</td>
+            <td>{{ asset.description }}</td>
+            <td>{{ asset.category.name }}</td>
+            <td> $ {{ asset.value }}</td>
+            <td>{{ asset.purchase_date }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Asset actions">
+                {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset(this)" data-id="{{ asset.id }}"> Update </button>
+                <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset(this)" data-id="{{ asset.id }}">Delete</button>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Filter</h5>
+          <form method="get">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ filter.form.description|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.category|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.value|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.purchase_date|as_crispy_field }}
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filter</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <form method="get" class="form-inline">
-    {% csrf_token %}
-    {{ filter.form|crispy }}
-    <button type="submit" class="btn btn-primary mt-2">Apply Filter</button>
-  </form>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Asset no.</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Value</th>
-        <th>Purchase Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for asset in filter.qs %}
-      <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
-        <td>{{ asset.id }}</td>
-        <td>{{ asset.description }}</td>
-        <td>{{ asset.category.name }}</td>
-        <td>{{ asset.value }} PLN</td>
-        <td>{{ asset.purchase_date }}</td>
-        <td>
-          <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset(this)" data-id="{{ asset.id }}"> Update </button>
-          <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset(this)" data-id="{{ asset.id }}">Delete</button>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
 
   <script>
     function deleteAsset(button) {
       var assetId = button.getAttribute("data-id");
       window.location.href = "/asset/" + assetId + "/delete/";
     }
+
     function updateAsset(button) {
       var assetId = button.getAttribute("data-id");
       window.location.href = "/asset/" + assetId + "/update/";
