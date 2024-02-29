@@ -15,6 +15,7 @@ class AssetView(ListView):
     template_name = 'assets.html'
     model = Asset
     filterset_class = AssetFilter
+    # permission_required = 'viewer.add_asset'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -23,9 +24,10 @@ class AssetView(ListView):
         return context
 
 
-class EmployeeView(ListView):
+class EmployeeView(PermissionRequiredMixin, ListView):
     template_name = 'employees.html'
     model = Employee
+    permission_required = 'viewer.add_asset'
 
 
 class AssetCreateView(PermissionRequiredMixin, CreateView):
