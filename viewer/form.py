@@ -1,12 +1,8 @@
 import re
 from datetime import date
 from django import forms
-
 from django.core.exceptions import ValidationError
-from django.forms import (
-    CharField, DateField, IntegerField, ModelForm
-)
-
+from django.forms import CharField, ModelForm
 from viewer.models import Asset, Employee
 
 
@@ -15,8 +11,15 @@ def capitalized_validator(value):
         raise ValidationError('Value must be capitalized.')
 
 
-class PastMonthField(DateField):
+def capitalized_validator_manager(value):
+    first_name, last_name = value.split(' ', 1)
+    if not (first_name[0].isupper() and last_name[0].isupper()):
+        raise ValidationError('Both first and last names must be capitalized.')
+
+
+class PastMonthField(forms.DateField):
     widget = forms.DateInput(attrs={'type': 'date'})
+# Custom form field for date input with a 'date' type widget.
 
     def validate(self, value):
         super().validate(value)
@@ -29,9 +32,16 @@ class PastMonthField(DateField):
 
 
 class AssetForm(ModelForm):
-    description = CharField(validators=[capitalized_validator], required=True,
-                            error_messages={'required': 'This field cannot be empty.'})
+    vendor = CharField(validators=[capitalized_validator])
 
+    purchase_date = PastMonthField()
+
+    # def clean_description(self):
+    #     description = self.cleaned_data.get('description')
+    #     if not description.strip():
+    #         raise ValidationError("Description field cannot be empty.")
+    # #     return description
+    #
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -40,31 +50,12 @@ class AssetForm(ModelForm):
     class Meta:
         model = Asset
         fields = '__all__'
-        error_messages = {
-            'description': {
-                'null': "This field cannot be empty."
-            }
-        }
-
-    vendor = CharField(validators=[capitalized_validator])
-    purchase_date = PastMonthField()
-
-    def clean_description(self):
-        # Force each sentence of the description to be capitalized.
-        initial = self.cleaned_data['description']
-        sentences = re.sub(r'\s*\.\s*', '.', initial).split('.')
-        return '. '.join(sentence.capitalize() for sentence in sentences)
-
-    def clean(self):
-        description = self.cleaned_data.get('description')
-        if description is None or description.strip() == '':
-            raise ValidationError("Description field cannot be empty.")
-        return self.cleaned_data
 
 
 class EmployeeForm(ModelForm):
-    # description = CharField(validators=[capitalized_validator], required=True,
-    #                         error_messages={'required': 'This field cannot be empty.'})
+    name = CharField(validators=[capitalized_validator], required=True)
+    surname = CharField(validators=[capitalized_validator], required=True)
+    manager = CharField(validators=[capitalized_validator_manager], required=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -74,9 +65,3 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
-        # error_messages = {
-        #     'description': {
-        #         'null': "This field cannot be empty."
-        #     }
-        # }
-
