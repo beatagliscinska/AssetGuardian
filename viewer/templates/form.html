@@ -30,9 +30,14 @@
     <div class="form-group">
       <div class="row">
         <div class="col">
-          {{ form.serial_number.errors }}
-          <label for="{{ form.serial_number.id_for_label }}">Serial number:</label>
-          {{ form.serial_number }}
+           <!-- Displaying error messages in red -->
+           {% for error in form.serial_number.errors %}
+              <div class="text-danger">{{ error }}</div>
+           {% endfor %}
+           <!-- Label for serial number field -->
+           <label for="{{ form.serial_number.id_for_label }}">Serial number:</label>
+           <!-- Displaying the serial number input field -->
+           {{ form.serial_number }}
         </div>
         <div class="col">
           {{ form.value.errors }}
