@@ -12,35 +12,22 @@ from django.db import IntegrityError
 
 
 def register_page(request):
-    try:
-        if request.user.is_authenticated:
-            return redirect('home')
-        else:
-            if request.method == 'POST':
-                form = CustomCreateUserForm(request.POST)
-                if form.is_valid():
-                    username = form.cleaned_data.get('username')
-                    try:
-                        # Attempt to save the user
-                        form.save()
-                        user = form.cleaned_data.get('username')
-                        messages.success(request, 'Account was created for ' + user)
-                        return redirect('user_login')
-                    except IntegrityError:
-                        # Handle the case where the username already exists
-                        messages.error(request, 'Username is already taken.')
-            else:
-                form = CustomCreateUserForm()
+    if request.user.is_authenticated:
+        messages.warning(request, 'You are already logged in.')
+        return redirect('home')
 
-            context = {'form': form}
-            return render(request, 'accounts/register.html', context)
+    if request.method == 'POST':
+        form = CustomCreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account was created for {username}. You can now login.')
+            return redirect('user_login')
+    else:
+        form = CustomCreateUserForm()
 
-    except Exception as e:
-        # Log the exception or handle it appropriately
-        messages.error(request, 'An error occurred during registration.')
-        # You might want to log the exception for debugging purposes
-        # logging.error(str(e))
-        return redirect('home')  # Redirect to a generic error page or home page
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
 
 
 def login_page(request):
@@ -69,24 +56,3 @@ def logout_user(request):
 def profile(request):
     return render(request, 'accounts/profile.html')
 
-
-# @login_required
-# def profile(request):
-#     if request.method == 'POST':
-#         user = request.user
-#         form = CustomChangeUserForm(request.POST, request.FILES, instance=user)
-#         if form.is_valid():
-#             user_form = form.save()
-#
-#             messages.success(request, 'Your profile has been updated!')
-#             return redirect('profile', user_form.username)
-#
-#         for error in list(form.errors.values()):
-#             messages.error(request, error)
-#
-#     user = get_user_model().objects.filter(username=request.user.username).first()
-#     if user:
-#         form = CustomChangeUserForm(instance=user)
-#         return render(request, 'accounts/profile.html', context={'form': form})
-#
-#     return redirect("home")

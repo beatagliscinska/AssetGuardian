@@ -9,8 +9,8 @@
         <p>Explore and manage all assets available.</p>
       </div>
 
-      <table class="table table-bordered table-sm"> <!-- Dodano klasę table-sm dla mniejszych wierszy -->
-        <thead class="bg-light"> <!-- Zmieniono klasę na bg-light dla delikatniejszego koloru tła nagłówków -->
+      <table class="table table-bordered table-sm">
+        <thead class="bg-light">
           <tr>
             <th>Asset no.</th>
             <th>Description</th>
@@ -45,7 +45,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Filter</h5>
+          <h5 class="card-title">Filters</h5>
           <form method="get">
             {% csrf_token %}
             <div class="form-group">
@@ -60,7 +60,7 @@
             <div class="form-group">
               {{ filter.form.purchase_date|as_crispy_field }}
             </div>
-            <button type="submit" class="btn btn-primary">Apply Filter</button>
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
           </form>
         </div>
       </div>

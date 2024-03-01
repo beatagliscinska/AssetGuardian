@@ -47,6 +47,17 @@ class AssetForm(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
 
+    def clean_serial_number(self):
+        """
+        Custom validation method to ensure serial number uniqueness.
+        Raises a validation error if a duplicate serial number is found.
+        """
+        serial_number = self.cleaned_data['serial_number']
+        asset_exists = Asset.objects.filter(serial_number=serial_number).exists()
+        if asset_exists:
+            raise forms.ValidationError("Serial number already exists. Please provide a unique serial number.")
+        return serial_number
+
     class Meta:
         model = Asset
         fields = '__all__'
