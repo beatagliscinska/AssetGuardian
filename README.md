@@ -19,16 +19,16 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 - [PyTest](https://pypi.org/project/pytest/)
 
 ### Key Features
-- *Centralized Asset Management:* AssetGuardian serves as a centralized platform for managing all types of assets. Users can easily view, add, update, and delete assets through the application.
-- *Asset Information Storage:* The application stores comprehensive information about each asset, including its category, description, vendor, serial number, value, assigned employee, and purchase date. This information allows users to track and monitor assets effectively.
-- *Employee Management:* In addition to assets, AssetGuardian enables the management of employees. Users can add, update, and delete employee records within the application.
+- **Centralized Asset Management:** AssetGuardian serves as a centralized platform for managing all types of assets. Users can easily view, add, update, and delete assets through the application.
+- **Asset Information Storage:** The application stores comprehensive information about each asset, including its category, description, vendor, serial number, value, assigned employee, and purchase date. This information allows users to track and monitor assets effectively.
+- **Employee Management:** In addition to assets, AssetGuardian enables the management of employees. Users can add, update, and delete employee records within the application.
 
 ### Functions
 
 #### User
-- *User Authentication:* Users can register, login, and logout. A unique username is required for registration.
-- *Asset Exploration:* Logged-in users can view, filter and sort assets.
-- *Asset Management:* Logged-in users with appropriate permissions can add, update, and remove assets.
+- **User Authentication:** Users can register, login, and logout. A unique username is required for registration.
+- **Asset Exploration:** Logged-in users can view, filter and sort assets.
+- **Asset Management:** Logged-in users with appropriate permissions can add, update, and remove assets.
 
 #### Admin
 - **Admin Dashboard:** After logging in, the admin is directed to a dashboard where comprehensive information is displayed, allowing efficient management of assets and employees.
