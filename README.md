@@ -3,7 +3,7 @@
 ### General Information
 AssetGuardian is a Django-powered application designed for efficient exploration and management of IT assets.
 
-Crafted by a team of Python developers, the project embraces the MVP (Minimum Viable Product) approach, allowing for rapid development and iteration. Tasks included brainstorming business ideas, architecting, logical design, and implementing front-end elements.
+Crafted by a trio of Python developers in just 42 hours, the project embraces the MVP (Minimum Viable Product) approach, enabling rapid development and iteration. Tasks included brainstorming business ideas, architectural design, logical implementation, and integrating front-end elements.
 
 With a well-defined task allocation, the team brought the envisioned concepts to fruition, culminating in the creation of this application.
 
@@ -36,7 +36,7 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 ### Screenshots
 
 ### Main page
-![Example screenshot](./img/screen_1.jpg)
+![Example screenshot](./img/screen1.jpg)
 
 ### Setup
 To clone this repository, refer to [this publication](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
