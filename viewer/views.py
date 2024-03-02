@@ -100,4 +100,3 @@ class EmployeeDeleteView(PermissionRequiredMixin, DeleteView):
     model = Employee
     success_url = reverse_lazy('employees')
     permission_required = 'viewer.delete_employee'
-

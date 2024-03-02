@@ -39,5 +39,3 @@ class Asset(Model):
 
     def __str__(self):
         return str(self.description)
-
-
