@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
@@ -16,17 +15,6 @@
             <p class="text-start">First Name: {{ user.first_name }}</p>
             <p class="text-start">Last Name: {{ user.last_name }}</p>
             <br>
-
-<!--            <form method="POST" enctype="multipart/form-data">-->
-<!--        {% csrf_token %}-->
-<!--       <fieldset class="form-group">-->
-<!--      <legend class="border-bottom mb-4">Edit profile</legend>-->
-<!--      {{ u_form|crispy }}-->
-<!--    </fieldset>-->
-<!--    <div class="form-group">-->
-<!--      <button class="btn btn-outline-info" type="submit">Update</button>-->
-<!--    </div>-->
-<!--  </form>-->
 
             <div class="form-content">
         <form method="post" enctype="multipart/form-data">
@@ -46,9 +34,15 @@
                 </div>
             </div>
             <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+            <button type="submit" class="btn btn-dark btn-lg">Update</button>
         </form>
     </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="{% url 'password_change' %}">
+                  Change Password</a>
+            </div>
+              <br>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
               <a href="{% url 'home' %}"><button type="submit" class="btn btn-primary">Home</button></a>

@@ -1,9 +1,12 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse_lazy
 
-from accounts.forms import CustomCreateUserForm, CustomChangeUserForm, UpdateUserForm
+from accounts.forms import CustomCreateUserForm, UpdateUserForm
 from accounts.models import CustomUser
 
 from django.contrib import messages
@@ -65,30 +68,6 @@ def logout_user(request):
     return render(request, 'accounts/logout.html')
 
 
-# @login_required
-# def profile(request):
-#     return render(request, 'accounts/profile.html')
-
-
-# @login_required
-# def profile(request):
-#     if request.method == 'POST':
-#         u_form = UpdateUserForm(request.POST, instance=request.user)
-#         if u_form.is_valid():
-#             u_form.save()
-#             messages.success(request, f'Your account has been updated!')
-#             return redirect('profile') # Redirect back to profile page
-#
-#     else:
-#         u_form = UpdateUserForm(instance=request.user)
-#
-#     context = {
-#         'u_form': u_form,
-#     }
-#
-#     return render(request, 'accounts/profile.html', context)
-
-
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -102,3 +81,8 @@ def profile(request):
         user_form = UpdateUserForm(instance=request.user)
 
     return render(request, 'accounts/profile.html', {'user_form': user_form})
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'accounts/change_password.html'
+    success_message = "Your password is changed successfully"
+    success_url = reverse_lazy('profile')
