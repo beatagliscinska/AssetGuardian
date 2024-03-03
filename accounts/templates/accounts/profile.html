@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
@@ -16,28 +17,38 @@
             <p class="text-start">Last Name: {{ user.last_name }}</p>
             <br>
 
-            <form method="post" class="form">
-        {% csrf_token %}
-          <p class="text-start h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit Profile</p>
-          <div class="form-outline mb-3">
-            <input type="text" id="first_name" name="first_name" class="form-control"
-                   placeholder="{{user.first_name}}" />
-            <label class="form-label" for="first_name"></label>
-          </div>
+<!--            <form method="POST" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+<!--       <fieldset class="form-group">-->
+<!--      <legend class="border-bottom mb-4">Edit profile</legend>-->
+<!--      {{ u_form|crispy }}-->
+<!--    </fieldset>-->
+<!--    <div class="form-group">-->
+<!--      <button class="btn btn-outline-info" type="submit">Update</button>-->
+<!--    </div>-->
+<!--  </form>-->
 
-          <div class="form-outline mb-3">
-            <input type="text" id="last_name" name="last_name" class="form-control"
-                   placeholder="{{user.last_name}}"/>
-            <label class="form-label" for="last_name"></label>
-          </div>
-
-          <div class="form-outline mb-3">
-            <input type="text" id="email" name="email" class="form-control"
-                   placeholder="{{user.email}}"/>
-            <label class="form-label" for="email"></label>
-          </div>
-          <button type="submit" class="btn btn-outline-info">Update</button>
-          <br><br>
+            <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Username:</label>
+                            {{ user_form.username }}
+                      <label class="small mb-1">First name:</label>
+                            {{ user_form.first_name }}
+                       <label class="small mb-1">Last name:</label>
+                            {{ user_form.last_name }}
+                        <label class="small mb-1">Email:</label>
+                            {{ user_form.email }}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+        </form>
+    </div>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
               <a href="{% url 'home' %}"><button type="submit" class="btn btn-primary">Home</button></a>
@@ -46,4 +57,5 @@
         </div>
       </div>
   </section>
+
 {% endblock %}

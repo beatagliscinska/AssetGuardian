@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from accounts.forms import CustomCreateUserForm, CustomChangeUserForm
+from accounts.forms import CustomCreateUserForm, CustomChangeUserForm, UpdateUserForm
 from accounts.models import CustomUser
 
 from django.contrib import messages
@@ -65,28 +65,40 @@ def logout_user(request):
     return render(request, 'accounts/logout.html')
 
 
-@login_required
-def profile(request):
-    return render(request, 'accounts/profile.html')
+# @login_required
+# def profile(request):
+#     return render(request, 'accounts/profile.html')
 
 
 # @login_required
 # def profile(request):
 #     if request.method == 'POST':
-#         user = request.user
-#         form = CustomChangeUserForm(request.POST, request.FILES, instance=user)
-#         if form.is_valid():
-#             user_form = form.save()
+#         u_form = UpdateUserForm(request.POST, instance=request.user)
+#         if u_form.is_valid():
+#             u_form.save()
+#             messages.success(request, f'Your account has been updated!')
+#             return redirect('profile') # Redirect back to profile page
 #
-#             messages.success(request, 'Your profile has been updated!')
-#             return redirect('profile', user_form.username)
+#     else:
+#         u_form = UpdateUserForm(instance=request.user)
 #
-#         for error in list(form.errors.values()):
-#             messages.error(request, error)
+#     context = {
+#         'u_form': u_form,
+#     }
 #
-#     user = get_user_model().objects.filter(username=request.user.username).first()
-#     if user:
-#         form = CustomChangeUserForm(instance=user)
-#         return render(request, 'accounts/profile.html', context={'form': form})
-#
-#     return redirect("home")
+#     return render(request, 'accounts/profile.html', context)
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+
+    return render(request, 'accounts/profile.html', {'user_form': user_form})
