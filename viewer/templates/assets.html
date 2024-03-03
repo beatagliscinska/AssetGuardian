@@ -23,7 +23,7 @@
 
         <tbody>
           {% for asset in filter.qs %}
-          <tr>
+          <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
             <td>{{ asset.id }}</td>
             <td>{{ asset.description }}</td>
             <td>{{ asset.category.name }}</td>
