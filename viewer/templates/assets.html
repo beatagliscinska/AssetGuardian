@@ -9,7 +9,7 @@
         <p>Explore and manage all assets available.</p>
       </div>
 
-      <table class="table table-bordered table-sm">
+      <table class="table table-bordered table-sm" id="asset-table">
         <thead class="bg-light">
           <tr>
             <th>Asset no.</th>
@@ -23,7 +23,7 @@
 
         <tbody>
           {% for asset in filter.qs %}
-          <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
+          <tr>
             <td>{{ asset.id }}</td>
             <td>{{ asset.description }}</td>
             <td>{{ asset.category.name }}</td>
@@ -32,8 +32,8 @@
             <td>
               <div class="btn-group" role="group" aria-label="Asset actions">
                 {% if user.is_authenticated %}
-                <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset(this)" data-id="{{ asset.id }}"> Update </button>
-                <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset(this)" data-id="{{ asset.id }}">Delete</button>
+                <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset({{ asset.id }})" data-id="{{ asset.id }}"> Update </button>
+                <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset({{ asset.id }})" data-id="{{ asset.id }}">Delete</button>
                 {% endif %}
               </div>
             </td>
@@ -49,10 +49,10 @@
           <form method="get">
             {% csrf_token %}
             <div class="form-group">
-              {{ filter.form.description|as_crispy_field }}
+              {{ filter.form.category|as_crispy_field }}
             </div>
             <div class="form-group">
-              {{ filter.form.category|as_crispy_field }}
+              {{ filter.form.description|as_crispy_field }}
             </div>
             <div class="form-group">
               {{ filter.form.value|as_crispy_field }}
@@ -60,7 +60,8 @@
             <div class="form-group">
               {{ filter.form.purchase_date|as_crispy_field }}
             </div>
-            <button type="submit" class="btn btn-primary">Apply Filters</button>
+            <button type="submit" class="btn btn-info btn-sm">Apply Filters</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="clearFilters()">Clear Filters</button>
           </form>
         </div>
       </div>
@@ -68,14 +69,16 @@
   </div>
 
   <script>
-    function deleteAsset(button) {
-      var assetId = button.getAttribute("data-id");
+    function deleteAsset(assetId) {
       window.location.href = "/asset/" + assetId + "/delete/";
     }
 
-    function updateAsset(button) {
-      var assetId = button.getAttribute("data-id");
+    function updateAsset(assetId) {
       window.location.href = "/asset/" + assetId + "/update/";
+    }
+
+    function clearFilters() {
+      window.location.href = "/assets/";
     }
   </script>
 {% endblock %}
