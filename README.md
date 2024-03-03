@@ -36,7 +36,9 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 ### Screenshots
 
 ### Main page
+Actions buttons Delete and Update are responsible for redirecting the user to the appropriate URL addresses related to deleting or updating an asset.
 ![Example screenshot](./img/screen1.jpg)
+
 
 ### Setup
 To clone this repository, refer to [this publication](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).

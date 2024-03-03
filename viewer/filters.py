@@ -1,5 +1,5 @@
 import django_filters
-from .models import Asset
+from viewer.models import Asset
 
 
 class AssetFilter(django_filters.FilterSet):
