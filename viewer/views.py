@@ -7,8 +7,13 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from viewer.models import Asset, Employee
 from viewer.form import AssetForm, EmployeeForm
+from django.core.exceptions import PermissionDenied
 
 LOGGER = getLogger()
+
+
+def permission_denied_view(request, exception):
+    return render(request, '403.html', status=403)
 
 
 class AssetView(ListView):
@@ -58,12 +63,22 @@ class AssetUpdateView(PermissionRequiredMixin, UpdateView):
         context['submit_label'] = 'Update'
         return context
 
+    def dispatch(self, request, *args, **kwargs):
+        if not self.has_permission():
+            raise PermissionDenied("You do not have permission to delete and update assets.")
+        return super().dispatch(request, *args, **kwargs)
+
 
 class AssetDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'asset_confirm_delete.html'
     model = Asset
     success_url = reverse_lazy('assets')
     permission_required = 'viewer.delete_asset'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.has_permission():
+            raise PermissionDenied("You do not have permission to delete and update assets.")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class EmployeeCreateView(PermissionRequiredMixin, CreateView):

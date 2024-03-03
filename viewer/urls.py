@@ -1,6 +1,7 @@
 from django.urls import path
 from viewer.views import AssetView, AssetCreateView, AssetUpdateView, AssetDeleteView
 from viewer.views import EmployeeCreateView, EmployeeDeleteView, EmployeeUpdateView
+from .views import permission_denied_view
 
 urlpatterns = [
     path('', AssetView.as_view(template_name='home.html'), name='home'),
@@ -11,3 +12,6 @@ urlpatterns = [
     path('employee/<int:pk>/update/', EmployeeUpdateView.as_view(), name='employee_update'),
     path('employee/<int:pk>/delete/', EmployeeDeleteView.as_view(), name='employee_delete'),
 ]
+
+
+handler403 = permission_denied_view

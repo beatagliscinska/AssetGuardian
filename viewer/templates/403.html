@@ -1,13 +1,7 @@
-<!--{% extends "base.html" %}-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>403 Forbidden</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>403 Forbidden</h1>-->
-<!--    <p>You do not have permission to access this page.</p>-->
-<!--    <a class="btn btn-info" href="{% url 'assets' %}">Cancel</a>-->
-<!--</body>-->
-<!--</html>-->
+{% extends "base.html" %}
+{% block content %}
+  <h1></h1>
+  <p>{{ exception }}</p>
+  <p>Please reach out to the administrator for assistance in obtaining the required permissions.</p>
+  <a class="btn btn-info" href="{% url 'assets' %}">Go Back</a>
+{% endblock %}

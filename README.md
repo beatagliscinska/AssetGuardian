@@ -39,6 +39,9 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 Actions buttons Delete and Update are responsible for redirecting the user to the appropriate URL addresses related to deleting or updating an asset.
 ![Example screenshot](./img/screen1.jpg)
 
+User trying to update or delete assets without required permissions, will be redirected to another page with a message explaining why.
+![Example screenshot](./img/screen2.jpg)
+
 
 ### Setup
 To clone this repository, refer to [this publication](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
