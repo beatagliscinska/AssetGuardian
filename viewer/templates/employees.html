@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="assets-list-header">
+    <h5 class="bg-light">Employees List</h5>
+    <p>Explore and manage all employees available.</p>
+  </div>
+  <table class="table table-bordered table-sm">
+    <thead class="bg-light">
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Position</th>
+        <th>Department</th>
+        <th>Manager</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in object_list %}
+        <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.surname }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.manager }}</td>
+          <td>
+            <button type="submit" class="btn btn-info btn-sm" onclick="updateEmployee(this)" data-id="{{ employee.id }}"> Update </button>
+            <button type="button" class="btn btn-warning btn-sm" onclick="deleteEmployee(this)" data-id="{{ employee.id }}">Delete</button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    function deleteEmployee(button) {
+      var employeeId = button.getAttribute("data-id");
+      window.location.href = "/employee/" + employeeId + "/delete/";
+    }
+    function updateEmployee(button) {
+      var employeeId = button.getAttribute("data-id");
+      window.location.href = "/employee/" + employeeId + "/update/";
+    }
+  </script>
+{% endblock %}

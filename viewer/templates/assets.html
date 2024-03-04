@@ -1,12 +1,84 @@
 {% extends "base.html" %}
- 
+{% load crispy_forms_tags %}
+
 {% block content %}
-  <h1>Welcome to your Assets List!</h1>
-  <ul>
-    {% for asset in object_list %}
-      <li>
-        {{asset.id}}. {{ asset.description }} - {{ asset.category.name }}:  {{ asset.value }} PLN, Purchase date: {{ asset.purchase_date }}
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="assets-list-header">
+        <h5 class="bg-light">Assets List</h5>
+        <p>Explore and manage all assets available.</p>
+      </div>
+
+      <table class="table table-bordered table-sm" id="asset-table">
+        <thead class="bg-light">
+          <tr>
+            <th>Asset no.</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Value</th>
+            <th>Purchase Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for asset in filter.qs %}
+          <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
+            <td>{{ asset.id }}</td>
+            <td>{{ asset.description }}</td>
+            <td>{{ asset.category.name }}</td>
+            <td> $ {{ asset.value }}</td>
+            <td>{{ asset.purchase_date }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Asset actions">
+                {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-info btn-sm" onclick="updateAsset({{ asset.id }})" data-id="{{ asset.id }}"> Update </button>
+                <button type="button" class="btn btn-warning btn-sm" onclick="deleteAsset({{ asset.id }})" data-id="{{ asset.id }}">Delete</button>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Filters</h5>
+          <form method="get">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ filter.form.category|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.description|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.value|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ filter.form.purchase_date|as_crispy_field }}
+            </div>
+            <button type="submit" class="btn btn-info btn-sm">Apply Filters</button>
+            <button type="button" class="btn btn-info btn-sm" onclick="clearFilters()">Clear Filters</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function deleteAsset(assetId) {
+      window.location.href = "/asset/" + assetId + "/delete/";
+    }
+
+    function updateAsset(assetId) {
+      window.location.href = "/asset/" + assetId + "/update/";
+    }
+
+    function clearFilters() {
+      window.location.href = "/assets/";
+    }
+  </script>
 {% endblock %}

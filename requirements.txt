@@ -1,0 +1,4 @@
+python -m pip install django==5.0
+pip install crispy-bootstrap4
+pip install django-crispy-forms
+pip install django_filter

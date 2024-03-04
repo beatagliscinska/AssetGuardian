@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="/static/images/equip.jpg"
+              class="img-fluid" alt="Equipment">
+          </div>
+          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 text-center">
+            <p class="text-start h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">User Details</p>
+            <p class="text-start">Username: {{ user.username }}</p>
+            <p class="text-start">First Name: {{ user.first_name }}</p>
+            <p class="text-start">Last Name: {{ user.last_name }}</p>
+            <br>
+
+            <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Username:</label>
+                            {{ user_form.username }}
+                      <label class="small mb-1">First name:</label>
+                            {{ user_form.first_name }}
+                       <label class="small mb-1">Last name:</label>
+                            {{ user_form.last_name }}
+                        <label class="small mb-1">Email:</label>
+                            {{ user_form.email }}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Update</button>
+        </form>
+    </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="{% url 'password_change' %}">
+                  Change Password</a>
+            </div>
+              <br>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="{% url 'home' %}"><button type="submit" class="btn btn-primary">Home</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+{% endblock %}

@@ -17,13 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from viewer.models import Asset, AssetCategory, Employee
+from viewer.views import AssetView, AssetCreateView, AssetUpdateView, AssetDeleteView, EmployeeView
 
 
 admin.site.register(Asset)
 admin.site.register(AssetCategory)
 admin.site.register(Employee)
 
+
 urlpatterns = [
+    # path('', include('viewer.urls')),
+    path('', include('accounts.urls')),
+    path('admin/', admin.site.urls, name='admin'),
+    path('assets/', AssetView.as_view(), name='assets'),
     path('', include('viewer.urls')),
-    path('admin/', admin.site.urls, name='admin')
+    path('employees/', EmployeeView.as_view(), name='employees'),
+    path('', AssetView.as_view(template_name='home.html'), name='home'),
+    path('asset/create', AssetCreateView.as_view(), name='asset_create'),
+    path('asset/<int:pk>/update/', AssetUpdateView.as_view(), name='asset_update'),
+    path('asset/<int:pk>/delete/', AssetDeleteView.as_view(), name='asset_delete')
+
 ]

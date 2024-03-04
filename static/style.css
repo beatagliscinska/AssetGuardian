@@ -1,0 +1,19 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
+.sort-arrow {
+  font-size: 10px; /* Adjust size as needed */
+}
+
+.sort-arrow::after {
+  content: "\25B2"; /* Unicode character for upward arrow */
+}
+
+.sort-arrow.desc::after {
+  content: "\25BC"; /* Unicode character for downward arrow */
+}
