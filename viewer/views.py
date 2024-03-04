@@ -23,6 +23,20 @@ class AssetView(ListView):
         context['filter'] = filter_instance
         return context
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # Sorting
+        sort_by = self.request.GET.get('sort_by', 'id')
+        sort_order = self.request.GET.get('sort_order', 'asc')
+
+        if sort_order == 'desc':
+            sort_by = f'-{sort_by}'
+
+        queryset = queryset.order_by(sort_by)
+
+        return queryset
+
 
 class EmployeeView(PermissionRequiredMixin, ListView):
     template_name = 'employees.html'

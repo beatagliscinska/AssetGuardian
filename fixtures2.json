@@ -1,0 +1,934 @@
+[
+    {
+      "model": "admin.logentry",
+      "pk": 1,
+      "fields": {
+        "action_time": "2024-02-27T17:12:11.088Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "admin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Username\", \"First name\", \"Last name\"]}}]"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 1,
+      "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 2,
+      "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 3,
+      "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 4,
+      "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 5,
+      "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 6,
+      "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 7,
+      "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 8,
+      "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 9,
+      "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 10,
+      "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 11,
+      "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 12,
+      "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 13,
+      "fields": {
+        "name": "Can add content type",
+        "content_type": 4,
+        "codename": "add_contenttype"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 14,
+      "fields": {
+        "name": "Can change content type",
+        "content_type": 4,
+        "codename": "change_contenttype"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 15,
+      "fields": {
+        "name": "Can delete content type",
+        "content_type": 4,
+        "codename": "delete_contenttype"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 16,
+      "fields": {
+        "name": "Can view content type",
+        "content_type": 4,
+        "codename": "view_contenttype"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 17,
+      "fields": {
+        "name": "Can add session",
+        "content_type": 5,
+        "codename": "add_session"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 18,
+      "fields": {
+        "name": "Can change session",
+        "content_type": 5,
+        "codename": "change_session"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 19,
+      "fields": {
+        "name": "Can delete session",
+        "content_type": 5,
+        "codename": "delete_session"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 20,
+      "fields": {
+        "name": "Can view session",
+        "content_type": 5,
+        "codename": "view_session"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 21,
+      "fields": {
+        "name": "Can add asset category",
+        "content_type": 6,
+        "codename": "add_assetcategory"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 22,
+      "fields": {
+        "name": "Can change asset category",
+        "content_type": 6,
+        "codename": "change_assetcategory"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 23,
+      "fields": {
+        "name": "Can delete asset category",
+        "content_type": 6,
+        "codename": "delete_assetcategory"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 24,
+      "fields": {
+        "name": "Can view asset category",
+        "content_type": 6,
+        "codename": "view_assetcategory"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 25,
+      "fields": {
+        "name": "Can add asset",
+        "content_type": 7,
+        "codename": "add_asset"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 26,
+      "fields": {
+        "name": "Can change asset",
+        "content_type": 7,
+        "codename": "change_asset"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 27,
+      "fields": {
+        "name": "Can delete asset",
+        "content_type": 7,
+        "codename": "delete_asset"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 28,
+      "fields": {
+        "name": "Can view asset",
+        "content_type": 7,
+        "codename": "view_asset"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 29,
+      "fields": {
+        "name": "Can add employee",
+        "content_type": 8,
+        "codename": "add_employee"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 30,
+      "fields": {
+        "name": "Can change employee",
+        "content_type": 8,
+        "codename": "change_employee"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 31,
+      "fields": {
+        "name": "Can delete employee",
+        "content_type": 8,
+        "codename": "delete_employee"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 32,
+      "fields": {
+        "name": "Can view employee",
+        "content_type": 8,
+        "codename": "view_employee"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 33,
+      "fields": {
+        "name": "Can add user",
+        "content_type": 9,
+        "codename": "add_customuser"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 34,
+      "fields": {
+        "name": "Can change user",
+        "content_type": 9,
+        "codename": "change_customuser"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 35,
+      "fields": {
+        "name": "Can delete user",
+        "content_type": 9,
+        "codename": "delete_customuser"
+      }
+    },
+    {
+      "model": "auth.permission",
+      "pk": 36,
+      "fields": {
+        "name": "Can view user",
+        "content_type": 9,
+        "codename": "view_customuser"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 1,
+      "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 2,
+      "fields": {
+        "app_label": "auth",
+        "model": "permission"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 3,
+      "fields": {
+        "app_label": "auth",
+        "model": "group"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 4,
+      "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 5,
+      "fields": {
+        "app_label": "sessions",
+        "model": "session"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 6,
+      "fields": {
+        "app_label": "viewer",
+        "model": "assetcategory"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 7,
+      "fields": {
+        "app_label": "viewer",
+        "model": "asset"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 8,
+      "fields": {
+        "app_label": "viewer",
+        "model": "employee"
+      }
+    },
+    {
+      "model": "contenttypes.contenttype",
+      "pk": 9,
+      "fields": {
+        "app_label": "accounts",
+        "model": "customuser"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "1vz84e4uqrja4l2xp9yq2l4dak3po7oc",
+      "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCYDlRcuu8ZyDCAVA0kpV0Z765NutDtf-_9l_C0rcVvPS1-juIitDj9boH4keoO4p3qrUludV3mIHdFHrTLqcX0vB7u30GhXr41pDxAstpCsDREBiZEyIpURmatKPBoINvx7BxkbZxTZB1mjcgpmiDeH-n3N_U:1rfkCA:BtoFtXPjEbqTWaOEmMBdz60-ivGVqmk-DALlZ3icPqg",
+        "expire_date": "2024-03-14T17:27:46.407Z"
+      }
+    },
+    {
+      "model": "viewer.assetcategory",
+      "pk": 1,
+      "fields": {
+        "name": "Laptops"
+      }
+    },
+    {
+      "model": "viewer.assetcategory",
+      "pk": 2,
+      "fields": {
+        "name": "Printers"
+      }
+    },
+    {
+      "model": "viewer.assetcategory",
+      "pk": 3,
+      "fields": {
+        "name": "Monitors"
+      }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 1,
+        "fields": {
+            "name": "Jan",
+            "surname": "Kowalski",
+            "position": "Manager",
+            "department": "IT",
+            "manager": "Tomasz"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 2,
+        "fields": {
+            "name": "John",
+            "surname": "Doe",
+            "position": "Developer",
+            "department": "Engineering",
+            "manager": "Jane"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 3,
+        "fields": {
+            "name": "Alice",
+            "surname": "Smith",
+            "position": "Designer",
+            "department": "Creative",
+            "manager": "Bob"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 4,
+        "fields": {
+            "name": "Michael",
+            "surname": "Williams",
+            "position": "QA Analyst",
+            "department": "Testing",
+            "manager": "Emily"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 5,
+        "fields": {
+            "name": "Sophia",
+            "surname": "Anderson",
+            "position": "Marketing Specialist",
+            "department": "Marketing",
+            "manager": "Daniel"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 6,
+        "fields": {
+            "name": "Kevin",
+            "surname": "Brown",
+            "position": "Sales Representative",
+            "department": "Sales",
+            "manager": "Olivia"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 7,
+        "fields": {
+            "name": "Mia",
+            "surname": "Clark",
+            "position": "HR Coordinator",
+            "department": "Human Resources",
+            "manager": "Liam"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 8,
+        "fields": {
+            "name": "Ethan",
+            "surname": "Garcia",
+            "position": "System Administrator",
+            "department": "IT",
+            "manager": "Ava"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 9,
+        "fields": {
+            "name": "Ava",
+            "surname": "Hernandez",
+            "position": "Financial Analyst",
+            "department": "Finance",
+            "manager": "Noah"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 10,
+        "fields": {
+            "name": "Logan",
+            "surname": "Young",
+            "position": "Graphic Designer",
+            "department": "Creative",
+            "manager": "Emma"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 11,
+        "fields": {
+            "name": "Chloe",
+            "surname": "King",
+            "position": "Project Manager",
+            "department": "Engineering",
+            "manager": "Liam"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 12,
+        "fields": {
+            "name": "Zachary",
+            "surname": "Cooper",
+            "position": "Customer Support Specialist",
+            "department": "Customer Support",
+            "manager": "Sophia"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 13,
+        "fields": {
+            "name": "Madison",
+            "surname": "Ward",
+            "position": "Content Writer",
+            "department": "Marketing",
+            "manager": "Carter"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 14,
+        "fields": {
+            "name": "Gabriel",
+            "surname": "Fisher",
+            "position": "Network Engineer",
+            "department": "IT",
+            "manager": "Isabella"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 15,
+        "fields": {
+            "name": "Grace",
+            "surname": "Barnes",
+            "position": "Legal Counsel",
+            "department": "Legal",
+            "manager": "Matthew"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 16,
+        "fields": {
+            "name": "Landon",
+            "surname": "Mitchell",
+            "position": "Product Manager",
+            "department": "Product Management",
+            "manager": "Ella"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 17,
+        "fields": {
+            "name": "Sofia",
+            "surname": "Collins",
+            "position": "Data Scientist",
+            "department": "Data Science",
+            "manager": "William"
+        }
+    },
+    {
+        "model": "viewer.employee",
+        "pk": 18,
+        "fields": {
+            "name": "Eva",
+            "surname": "Johnson",
+            "position": "Analyst",
+            "department": "Finance",
+            "manager": "David"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 1,
+        "fields": {
+            "category": 2,
+            "description": "Laptop Pro",
+            "vendor": "Dell",
+            "serial_number": "LP1234X",
+            "value": "1500.00",
+            "assigned_to": 1,
+            "purchase_date": "2023-12-10"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "description": "Desktop Elite",
+            "vendor": "HP",
+            "serial_number": "DE5678Y",
+            "value": "1200.00",
+            "assigned_to": 2,
+            "purchase_date": "2024-01-05"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 3,
+        "fields": {
+            "category": 3,
+            "description": "Monitor SuperView",
+            "vendor": "Samsung",
+            "serial_number": "SV8901Z",
+            "value": "500.00",
+            "assigned_to": 3,
+            "purchase_date": "2024-02-20"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 4,
+        "fields": {
+            "category": 2,
+            "description": "Tablet Flex",
+            "vendor": "Lenovo",
+            "serial_number": "TF4567A",
+            "value": "800.00",
+            "assigned_to": 4,
+            "purchase_date": "2023-11-15"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "description": "Desktop PowerPro",
+            "vendor": "Acer",
+            "serial_number": "PP7654B",
+            "value": "1600.00",
+            "assigned_to": 5,
+            "purchase_date": "2024-03-01"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 6,
+        "fields": {
+            "category": 2,
+            "description": "Ultrabook Slim",
+            "vendor": "Asus",
+            "serial_number": "US2341C",
+            "value": "1800.00",
+            "assigned_to": 6,
+            "purchase_date": "2023-12-28"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 7,
+        "fields": {
+            "category": 3,
+            "description": "LED Monitor Pro",
+            "vendor": "LG",
+            "serial_number": "LMP5678K",
+            "value": "600.00",
+            "assigned_to": 7,
+            "purchase_date": "2024-02-15"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 8,
+        "fields": {
+            "category": 2,
+            "description": "Convertible Laptop",
+            "vendor": "Sony",
+            "serial_number": "CLS8901X",
+            "value": "2000.00",
+            "assigned_to": 8,
+            "purchase_date": "2024-01-10"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 9,
+        "fields": {
+            "category": 1,
+            "description": "Desktop Revolution",
+            "vendor": "Gateway",
+            "serial_number": "DR4321Z",
+            "value": "1400.00",
+            "assigned_to": 9,
+            "purchase_date": "2023-11-20"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 10,
+        "fields": {
+            "category": 2,
+            "description": "Gaming Laptop Xtreme",
+            "vendor": "MSI",
+            "serial_number": "GLX7654A",
+            "value": "2500.00",
+            "assigned_to": 10,
+            "purchase_date": "2024-03-05"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 11,
+        "fields": {
+            "category": 3,
+            "description": "Curved Monitor HD",
+            "vendor": "ViewSonic",
+            "serial_number": "CMH5678M",
+            "value": "700.00",
+            "assigned_to": 11,
+            "purchase_date": "2024-02-25"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 12,
+        "fields": {
+            "category": 2,
+            "description": "Thin Client",
+            "vendor": "Wyse",
+            "serial_number": "TC2341B",
+            "value": "900.00",
+            "assigned_to": 12,
+            "purchase_date": "2023-12-22"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 13,
+        "fields": {
+            "category": 1,
+            "description": "Desktop Supreme",
+            "vendor": "Fujitsu",
+            "serial_number": "DS8901Z",
+            "value": "1700.00",
+            "assigned_to": 13,
+            "purchase_date": "2024-01-15"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 14,
+        "fields": {
+            "category": 2,
+            "description": "Business Laptop Pro",
+            "vendor": "Toshiba",
+            "serial_number": "BLP7654X",
+            "value": "1900.00",
+            "assigned_to": 14,
+            "purchase_date": "2023-11-30"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 15,
+        "fields": {
+            "category": 3,
+            "description": "HD Monitor Elite",
+            "vendor": "BenQ",
+            "serial_number": "HME5678Y",
+            "value": "800.00",
+            "assigned_to": 15,
+            "purchase_date": "2024-02-10"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 16,
+        "fields": {
+            "category": 2,
+            "description": "2-in-1 Laptop Hybrid",
+            "vendor": "Acer",
+            "serial_number": "LH4321C",
+            "value": "2200.00",
+            "assigned_to": 16,
+            "purchase_date": "2023-12-05"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 17,
+        "fields": {
+            "category": 1,
+            "description": "Desktop Master",
+            "vendor": "Lenovo",
+            "serial_number": "DM5678K",
+            "value": "1300.00",
+            "assigned_to": 17,
+            "purchase_date": "2024-01-30"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 18,
+        "fields": {
+            "category": 2,
+            "description": "Ultra-Slim Laptop",
+            "vendor": "HP",
+            "serial_number": "UL2341X",
+            "value": "2000.00",
+            "assigned_to": 18,
+            "purchase_date": "2023-11-25"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 19,
+        "fields": {
+            "category": 3,
+            "description": "4K Gaming Monitor",
+            "vendor": "Dell",
+            "serial_number": "4GM5678A",
+            "value": "1200.00",
+            "assigned_to": 19,
+            "purchase_date": "2024-02-20"
+        }
+    },
+    {
+        "model": "viewer.asset",
+        "pk": 20,
+        "fields": {
+            "category": 2,
+            "description": "Convertible Laptop Pro",
+            "vendor": "Asus",
+            "serial_number": "CLP7654B",
+            "value": "1800.00",
+            "assigned_to": 20,
+            "purchase_date": "2024-03-15"
+        }
+    },
+    {
+      "model": "accounts.customuser",
+      "pk": 1,
+      "fields": {
+        "last_login": "2024-02-29T17:27:46.400Z",
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-02-27T17:11:16Z",
+        "username": "admin",
+        "password": "pbkdf2_sha256$720000$dt6aA4dnuMrlPGodfi4Oht$GQjOoisfEYUn93psLi3oDU6XTm/4cKSNrnDaYtn5VmY=",
+        "first_name": "Piotr",
+        "last_name": "K",
+        "email": "piotr@gmail.com",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "accounts.customuser",
+      "pk": 2,
+      "fields": {
+        "last_login": "2024-02-28T17:30:23.224Z",
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-02-28T17:29:44.881Z",
+        "username": "tomek",
+        "password": "pbkdf2_sha256$720000$88xOjwXfmVPtAkATwJx9tf$QFX0asC1rN+ka8idXegDykXETfoayb1xfKUPDXRoRHY=",
+        "first_name": "Tomasz",
+        "last_name": "Tomaszewski",
+        "email": "tomasz@gmail.com",
+        "groups": [],
+        "user_permissions": []
+      }
+    }
+  ]

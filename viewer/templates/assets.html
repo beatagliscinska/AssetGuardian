@@ -11,15 +11,31 @@
   <form method="get" class="form-inline">
     {% csrf_token %}
     {{ filter.form|crispy }}
+    <label for="sort_by" class="mr-2">Sort By:</label>
+    <select name="sort_by" class="form-control">
+      <option value="id">Asset No.</option>
+      <option value="serial_number">Serial No.</option>
+      <option value="vendor">Vendor</option>
+      <option value="description">Description</option>
+      <option value="assigned_to">Owner</option>
+      <option value="value">Value</option>
+      <option value="purchase_date">Vendor</option>
+    </select>
+    <select name="sort_order" class="form-control">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
     <button type="submit" class="btn btn-primary mt-2">Apply Filter</button>
   </form>
 
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Asset no.</th>
+        <th>Asset No.</th>
+        <th>Serial No.</th>
+        <th>Vendor</th>
         <th>Description</th>
-        <th>Category</th>
+        <th>Owner</th>
         <th>Value</th>
         <th>Purchase Date</th>
         <th>Actions</th>
@@ -30,8 +46,10 @@
       {% for asset in filter.qs %}
       <tr onmouseover="this.style.backgroundColor='#cceeff'" onmouseout="this.style.backgroundColor=''">
         <td>{{ asset.id }}</td>
+        <td>{{ asset.serial_number }}</td>
+        <td>{{ asset.vendor }}</td>
         <td>{{ asset.description }}</td>
-        <td>{{ asset.category.name }}</td>
+        <td>{{ asset.assigned_to.name }} {{ asset.assigned_to.surname }} (ID: {{ asset.assigned_to.id }})</td>
         <td>{{ asset.value }} PLN</td>
         <td>{{ asset.purchase_date }}</td>
         <td>
@@ -53,4 +71,5 @@
       window.location.href = "/asset/" + assetId + "/update/";
     }
   </script>
+
 {% endblock %}
