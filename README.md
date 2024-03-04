@@ -19,16 +19,16 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 - [PyTest](https://pypi.org/project/pytest/)
 
 ### Key Features
-- **Centralized Asset Management:** AssetGuardian serves as a centralized platform for managing all types of assets. Users can easily view, add, update, and delete assets through the application.
-- **Asset Information Storage:** The application stores comprehensive information about each asset, including its category, description, vendor, serial number, value, assigned employee, and purchase date. This information allows users to track and monitor assets effectively.
-- **Employee Management:** In addition to assets, AssetGuardian enables the management of employees. Users can add, update, and delete employee records within the application.
+- **Centralized Asset Management:** AssetGuardian serves as a centralized platform for managing all types of assets. Users can easily view, add, update and delete assets through the application.
+- **Asset Information Storage:** The application stores comprehensive information about each asset, including its category, description, vendor, serial number, value, assigned employee and purchase date. This information allows users to track and monitor assets effectively.
+- **Employee Management:** In addition to assets, AssetGuardian enables the management of employees. Users can add, update and delete employee records within the application.
 
 ### Functions
 
 #### User
-- **User Authentication:** Users can register, login, and logout. A unique username is required for registration.
+- **User Authentication:** Users can register, login and logout. The unique username is required for registration.
 - **Asset Exploration:** Logged-in users can view, filter and sort assets.
-- **Asset Management:** Logged-in users with appropriate permissions can add, update, and remove assets.
+- **Asset Management:** Logged-in users with appropriate permissions can add, update and remove assets.
 
 #### Admin
 - **Admin Dashboard:** After logging in, the admin is directed to a dashboard where comprehensive information is displayed, allowing efficient management of assets and employees.
@@ -39,7 +39,7 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 Actions buttons Delete and Update are responsible for redirecting the user to the appropriate URL addresses related to deleting or updating an asset.
 ![Example screenshot](./img/screen1.jpg)
 
-User trying to update or delete assets without required permissions, will be redirected to another page with a message explaining why.
+If user without required permissions is trying to update or delete assets, will be redirected to another page with a relevant message.
 ![Example screenshot](./img/screen2.jpg)
 
 
@@ -56,7 +56,6 @@ $ python --version
 Create and activate a virtual environment:
 
 ```bash
-$ python -m venv .venv
 $ .venv\Scripts\activate.bat
 ```
 
@@ -84,15 +83,23 @@ $ python manage.py runserver
 
 Run the application:
 
-
 ```bash
 # Run from Terminal
-python main.py
+python manage.py
 # Access from browser or using curl
 curl 127.0.0.1:8000/
 
 
 ```
 
+### Room for Improvement
 
-This updated README.md file provides clear and concise information about the AssetGuardian application, its features, technologies used, setup process, and testing procedures. It also improves readability and organization for better user understanding.
+To be improved:
+- make contraints for username and password,
+- add possibility to reset password with link to e-mail,
+- add dropdown list to choose manager from employees' list,
+- 
+
+
+
+This updated README.md file provides clear and concise information about the AssetGuardian application, its features, technologies used, setup process and testing procedures. It improves readability for better user understanding.
