@@ -36,12 +36,12 @@ class AssetForm(ModelForm):
 
     purchase_date = PastMonthField()
 
-    # def clean_description(self):
-    #     description = self.cleaned_data.get('description')
-    #     if not description.strip():
-    #         raise ValidationError("Description field cannot be empty.")
-    # #     return description
-    #
+    def clean_description(self):
+        description = self.cleaned_data.get('description')
+        if not description.strip():
+            raise ValidationError("Description field cannot be empty.")
+        return description
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -53,7 +53,7 @@ class AssetForm(ModelForm):
         Raises a validation error if a duplicate serial number is found.
         """
         serial_number = self.cleaned_data['serial_number']
-        asset_exists = Asset.objects.filter(serial_number=serial_number).exists()
+        asset_exists = Asset.objects.exclude(id=self.instance.id).filter(serial_number=serial_number).exists()
         if asset_exists:
             raise forms.ValidationError("Serial number already exists. Please provide a unique serial number.")
         return serial_number
