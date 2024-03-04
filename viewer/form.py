@@ -37,12 +37,12 @@ class AssetForm(ModelForm):
 
     purchase_date = PastMonthField()
 
-    # def clean_description(self):
-    #     description = self.cleaned_data.get('description')
-    #     if not description.strip():
-    #         raise ValidationError("Description field cannot be empty.")
-    # #     return description
-    #
+    def clean_description(self):
+        description = self.cleaned_data.get('description')
+        if not description.strip():
+            raise ValidationError("Description field cannot be empty.")
+        return description
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
