@@ -36,12 +36,41 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 ### Screenshots
 
 ### Main page
-Actions buttons Delete and Update are responsible for redirecting the user to the appropriate URL addresses related to deleting or updating an asset.
+The Asset List page provides a comprehensive view of all assets within the application.
+Users can explore the list of assets and perform actions such as deletion and updating.
+The "Delete" and "Update" buttons redirect users to the appropriate URL addresses for these actions.
+Additionally, functionality is implemented to highlight a line when the mouse hovers over it.
 ![Example screenshot](./img/screen1.jpg)
 
-If user without required permissions is trying to update or delete assets, will be redirected to another page with a relevant message.
-![Example screenshot](./img/screen2.jpg)
 
+The application provides functionality to filter assets and reset applied filters.
+![Example screenshot](./img/screen4.jpg)
+
+The Employees List page provides a comprehensive view of all employees within the application.
+Users can explore the list of employees to view their details.
+This page serves as a hub for managing employee information.
+![Example screenshot](./img/screen8.jpg)
+
+If a user lacking necessary permissions attempts to update or delete assets, they will be redirected to another page displaying a relevant message.
+![Example screenshot](./img/screen3.jpg)
+
+The "Add Asset" and "Add Employee" forms allow users with required permissions to add new assets and employees to the system.
+These forms provide fields for entering relevant information about the asset or employee being added.
+Upon submission, the data entered into these forms is processed and stored in the system's database.
+
+![Example screenshot](./img/addasset.jpg)
+![Example screenshot](./img/addemployee.jpg)
+Applications implement a custom validation in Add asset form to ensure that each serial number is unique.
+![Example screenshot](./img/errorserialno.jpg)
+The application includes login and sign-up functionality.
+![Example screenshot](./img/screen6.jpg)
+![Example screenshot](./img/screen7.jpg)
+
+The profile page provides functionality for reviewing and updating user information.
+Users can review their profile data and update it as necessary.
+Additionally, users can change their password from this page.
+![Example screenshot](./img/profile1.jpg)
+![Example screenshot](./img/changepassword.jpg)
 
 ### Setup
 To clone this repository, refer to [this publication](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
@@ -56,7 +85,7 @@ $ python --version
 Create and activate a virtual environment:
 
 ```bash
-$ .venv\Scripts\activate.bat
+$ venv\Scripts\activate
 ```
 
 Install dependencies:
@@ -68,6 +97,7 @@ Set up the database:
 
 ```bash
 $ python manage.py migrate
+$ python manage.py makemigrations
 ```
 Create a superuser:
 
@@ -84,8 +114,6 @@ $ python manage.py runserver
 Run the application:
 
 ```bash
-# Run from Terminal
-python manage.py
 # Access from browser or using curl
 curl 127.0.0.1:8000/
 
