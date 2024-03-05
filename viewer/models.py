@@ -30,7 +30,7 @@ class Employee(Model):
 class Asset(Model):
     objects = None
     category = ForeignKey(AssetCategory, on_delete=DO_NOTHING)
-    description = TextField()
+    description = CharField(max_length=128)
     vendor = CharField(max_length=128)
     serial_number = CharField(max_length=128)
     value = DecimalField(max_digits=10, decimal_places=2)
