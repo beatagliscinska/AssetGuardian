@@ -17,3 +17,7 @@ background: #eee;
 .sort-arrow.desc::after {
   content: "\25BC"; /* Unicode character for downward arrow */
 }
+
+input[type="text"], textarea {
+  height: 40px; /* Adjust the height as needed */
+}
