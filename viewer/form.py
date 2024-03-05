@@ -11,11 +11,14 @@ def capitalized_validator(value):
         raise ValidationError('Value must be capitalized.')
 
 
-#TODO
-# def capitalized_validator_manager(value):
-#     first_name, last_name = value.split(' ', 1)
-#     if not (first_name[0].isupper() and last_name[0].isupper()):
-#         raise ValidationError('Both first and last names must be capitalized.')
+def capitalized_validator_manager(value):
+    names = value.split(' ')
+    if len(names) != 2:
+        raise ValidationError('Both first and last names must be provided and separated by a space.')
+
+    first_name, last_name = names
+    if not (first_name[0].isupper() and last_name[0].isupper()):
+        raise ValidationError('Both first and last names must be capitalized.')
 
 
 class PastMonthField(forms.DateField):
@@ -67,7 +70,7 @@ class AssetForm(ModelForm):
 class EmployeeForm(ModelForm):
     name = CharField(validators=[capitalized_validator], required=True)
     surname = CharField(validators=[capitalized_validator], required=True)
-    # manager = CharField(validators=[capitalized_validator_manager], required=True)
+    manager = CharField(validators=[capitalized_validator_manager], required=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
