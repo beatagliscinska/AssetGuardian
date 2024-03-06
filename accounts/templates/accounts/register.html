@@ -58,6 +58,9 @@
             <input type="text" id="email" name="email" class="form-control"
                    placeholder="Type your email"/>
             <label class="form-label" for="email"></label>
+            {% for error in form.email.errors %}
+               <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
           </div>
           <button type="submit" class="btn btn-primary btn-block">Sign up</button>
           <br><br>
