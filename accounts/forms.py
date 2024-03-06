@@ -15,6 +15,12 @@ class CustomCreateUserForm(UserCreationForm):
             'unique': 'The username you\'ve chosen is already in use. Please select a different username.'
         }
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already in use. Please use a different email.")
+        return email
+
 
 class CustomChangeUserForm(UserChangeForm):
     class Meta:
