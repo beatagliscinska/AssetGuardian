@@ -57,6 +57,10 @@ class AssetForm(ModelForm):
         Raises a validation error if a duplicate serial number is found.
         """
         serial_number = self.cleaned_data['serial_number']
+        """
+        Check if an asset with the same serial number already exists in the database,
+        excluding the current asset being edited.
+        """
         asset_exists = Asset.objects.exclude(id=self.instance.id).filter(serial_number=serial_number).exists()
         if asset_exists:
             raise forms.ValidationError("Serial number already exists. Please provide a unique serial number.")
@@ -80,3 +84,11 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
+
+
+    def clean_serial_number(self):
+        serial_number = self.cleaned_data['serial_number']
+        asset_exists = Asset.objects.exclude(id=self.instance.id).filter(serial_number=serial_number).exists()
+        if asset_exists:
+            raise forms.ValidationError("Serial number already exists. Please provide a unique serial number.")
+        return serial_number

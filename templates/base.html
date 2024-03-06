@@ -29,7 +29,7 @@
         </div>
         {% if user.is_authenticated %}
         <div class="nav-item">
-          <a class="nav-link active btn btn-info btn" href="{% url 'profile' %}" style="padding: 0.25rem 0.5rem;">Welcome, <span style="font-weight: bold;">{{ user.username|title }}</span></a>
+          <a class="nav-link active btn btn-info btn" href="{% url 'profile' %}" style="padding: 0.25rem 0.5rem;">Welcome, <span style="font-weight: bold;">{{ user.username}}</span></a>
         </div>
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="{% url 'profile' %}">Profile</a>
@@ -58,5 +58,7 @@
     </div>
   </div>
 </body>
-
+        <footer>
+            {% include 'footer.html' %}
+        </footer>
 </html>
