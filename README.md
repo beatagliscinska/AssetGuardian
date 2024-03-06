@@ -1,5 +1,16 @@
 ## AssetGuardian
 
+## Table of Contents
+* [General Information](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Dependencies](#dependencies)
+* [Setup on Windows OS](#setup-on-windows-os)
+* [Room for Improvement](#room-for-improvement)
+* [Cooperators](#cooperators)
+
+
 ### General Information
 AssetGuardian is a Django-powered application designed for exploration and management of IT assets.
 
@@ -11,6 +22,7 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 
 ### Technologies Used
 - [Python](https://www.python.org/)
+- [JavaScript](https://developer.mozilla.org/)
 - [Django](https://www.djangoproject.com/)
 - [SQLite](https://www.sqlite.org/)
 - [HTML](https://en.wikipedia.org/wiki/HTML)
@@ -18,12 +30,11 @@ By adopting the MVP strategy, the team prioritized the development of critical f
 - [Bootstrap](https://getbootstrap.com/)
 - [PyTest](https://pypi.org/project/pytest/)
 
-### Key Features
+### Features
 - **Centralized Asset Management:** AssetGuardian serves as a centralized platform for managing all types of assets. Users can easily view, add, update and delete assets through the application.
 - **Asset Information Storage:** The application stores comprehensive information about each asset, including its category, description, vendor, serial number, value, assigned employee and purchase date. This information allows users to track and monitor assets effectively.
 - **Employee Management:** In addition to assets, AssetGuardian enables the management of employees. Users can add, update and delete employee records within the application.
 
-### Functions
 
 #### User
 - **User Authentication:** Users can register, login and logout. The unique username is required for registration.
@@ -60,8 +71,18 @@ Upon submission, the data entered into these forms is processed and stored in th
 
 ![Example screenshot](./img/addasset.jpg)
 ![Example screenshot](./img/addemployee.jpg)
-Applications implement a custom validation in Add asset form to ensure that each serial number is unique.
+Applications implement a custom validation in Add asset form to ensure that each serial number is unique. Raises a validation error if a duplicate serial number is found.
 ![Example screenshot](./img/errorserialno.jpg)
+We achived this thanks to, clean_serial_number, ensures that the entered serial number in a Django form is unique among existing records in the database, raising a validation error if it already exists.To achieve this, it executes a database query excluding the currently edited object, ensuring accurate uniqueness validation.
+```bash
+    def clean_serial_number(self):
+        serial_number = self.cleaned_data['serial_number']
+        asset_exists = Asset.objects.exclude(id=self.instance.id).filter(serial_number=serial_number).exists()
+        if asset_exists:
+            raise forms.ValidationError("Serial number already exists. Please provide a unique serial number.")
+        return serial_number
+
+````
 The application includes login and sign-up functionality.
 ![Example screenshot](./img/screen6.jpg)
 ![Example screenshot](./img/screen7.jpg)
@@ -72,43 +93,55 @@ Additionally, users can change their password from this page.
 ![Example screenshot](./img/profile1.jpg)
 ![Example screenshot](./img/changepassword.jpg)
 
-### Setup
+
+### Dependencies
+
+* Django: Django is a popular Python framework used for building web applications quickly and efficiently. It comes with a variety of built-in features that simplify the development process.
+
+* crispy-bootstrap4: Crispy-Bootstrap4 is an extension for Django Crispy Forms that helps in styling forms with Bootstrap 4, making them look more visually appealing and responsive.
+
+* django-crispy-forms: Django Crispy Forms is a Django application that provides a clean and customizable way to manage form layouts and appearance in web applications.
+
+* django_filter: Django Filter is a tool used to simplify the implementation of dynamic query filters in Django projects, particularly useful for searching and filtering large datasets efficiently.
+
+
+### Setup on Windows OS
 To clone this repository, refer to [this publication](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 To download and install Python 3.12.2, visit [this link](https://www.python.org/).
 
 Python version check:
 ```bash
-$ python --version
+python --version
 ```
 
 Create and activate a virtual environment:
 
 ```bash
-$ venv\Scripts\activate
+venv\Scripts\activate
 ```
 
 Install dependencies:
 
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 Set up the database:
 
 ```bash
-$ python manage.py migrate
-$ python manage.py makemigrations
+python manage.py migrate
+
 ```
 Create a superuser:
 
 ```bash
-$ python manage.py createsuperuser
+python manage.py createsuperuser
 ```
 
 Run the server:
 
 ```bash
-$ python manage.py runserver
+python manage.py runserver
 ```
 
 Run the application:
@@ -123,11 +156,11 @@ curl 127.0.0.1:8000/
 ### Room for Improvement
 
 To be improved:
-- make contraints for username and password,
+- make constrains for username and password,
 - add possibility to reset password with link to e-mail,
 - add dropdown list to choose manager from employees' list,
-- 
 
 
+### Cooperators
 
 This updated README.md file provides clear and concise information about the AssetGuardian application, its features, technologies used, setup process and testing procedures. It improves readability for better user understanding.
