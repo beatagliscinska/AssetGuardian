@@ -163,4 +163,20 @@ To be improved:
 
 ### Cooperators
 
-This updated README.md file provides clear and concise information about the AssetGuardian application, its features, technologies used, setup process and testing procedures. It improves readability for better user understanding.
+**Irena Połumackanycz** 
+
+Junior Python Developer   [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-PROFIL-blue)](https://www.linkedin.com/in/irenapolumackanycz/)
+
+**Beata Gliscinska**  
+
+Junior Python Developer   [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-PROFIL-blue)](https://www.linkedin.com/in/beatagliscinska/)
+
+**Piotr Kwiatkowski**  
+Junior Python Developer   [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-PROFIL-blue)](https://www.linkedin.com/in/piotr-kwiatkowski-908950112/)
+
+
+
+
+
+
+*This updated README.md file provides clear and concise information about the AssetGuardian application, its features, technologies used, setup process and testing procedures. It improves readability for better user understanding.*
