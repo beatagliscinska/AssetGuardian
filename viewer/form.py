@@ -1,4 +1,3 @@
-import re
 from datetime import date
 from django import forms
 from django.core.exceptions import ValidationError
@@ -84,7 +83,6 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'
-
 
     def clean_serial_number(self):
         serial_number = self.cleaned_data['serial_number']

@@ -1,18 +1,11 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from accounts.forms import CustomCreateUserForm, UpdateUserForm
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import render, redirect
-from django.contrib import messages
-
-from accounts.forms import CustomCreateUserForm, CustomChangeUserForm
-from accounts.models import CustomUser
-
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.db import IntegrityError
 
 
 def register_page(request):

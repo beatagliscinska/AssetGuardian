@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from django_filters.views import FilterView
 from .filters import AssetFilter
 from logging import getLogger
 from django.urls import reverse_lazy
@@ -58,7 +57,7 @@ class AssetUpdateView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('assets')
     permission_required = 'viewer.update_asset'
 
-    def get_context_data(self, **kwargs):  # method to provide additional data to the template
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['submit_label'] = 'Update'
         return context
@@ -87,7 +86,7 @@ class EmployeeCreateView(PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('employees')
     permission_required = 'viewer.add_employee'
 
-    def get_context_data(self, **kwargs):  # method to provide additional data to the template
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['submit_label'] = 'Add Employee'
         return context
@@ -104,7 +103,7 @@ class EmployeeUpdateView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('employees')
     permission_required = 'viewer.update_employee'
 
-    def get_context_data(self, **kwargs):  # method to provide additional data to the template
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['submit_label'] = 'Update'
         return context
